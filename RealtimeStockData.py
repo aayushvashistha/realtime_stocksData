@@ -8,12 +8,8 @@ import yfinance as yf
 def main():
 
     stocks = ["TSLA", "TD", "AMZN", "MSFT", "INTC", "GOOG", "INFY", "TCS"]      # Add/Remove stocks as required
-    start = dt.datetime.today()- dt.timedelta(30)
-    end = dt.datetime.today()
-    starttime = time.time()
 
     count = 0
-
     #Using while loop to get the script running for fetching live stocks data at every 30 secs interval
     while True:
         count +=1
@@ -24,7 +20,6 @@ def main():
         for ticker in stocks:
             data[ticker] = yf.download(ticker, period="1d", interval="1m")[['Adj Close']]
             # data = yf.download(tickers="TSLA", period="1d", interval="1m") (for getting a single stock data)
-
         print("\n", data, "\n\n")
         countdown(30) #time is in secs
 
